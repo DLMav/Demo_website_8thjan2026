@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Mavlers Digital Marketing Agency</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        nav { background: #1a1a2e; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        .logo span { color: #e94560; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #fff; text-decoration: none; }
+        .page-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .case-studies { padding: 5rem 2rem; }
+        .case-studies .container { max-width: 1200px; margin: 0 auto; }
+        .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .case-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .case-card img { width: 100%; height: 200px; object-fit: cover; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .case-card .content { padding: 2rem; }
+        .case-card h3 { font-size: 1.5rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+        .case-card .industry { color: #e94560; font-size: 0.875rem; margin-bottom: 1rem; }
+        .case-card p { color: #666; margin-bottom: 1rem; }
+        .stats { display: flex; gap: 2rem; margin-top: 1rem; }
+        .stat { text-align: center; }
+        .stat .number { font-size: 1.5rem; font-weight: bold; color: #e94560; }
+        .stat .label { font-size: 0.75rem; color: #666; }
+        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: #e94560; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
+        footer { background: #0f0f1a; color: #fff; padding: 3rem 2rem; text-align: center; }
+        .tracking-indicator { position: fixed; bottom: 20px; right: 20px; background: #4CAF50; color: white; padding: 10px 15px; border-radius: 5px; font-size: 12px; z-index: 9999; display: flex; align-items: center; gap: 8px; }
+        .tracking-indicator .dot { width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .intent-badge { background: #ff9800; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-top: 1rem; }
+    </style>
+    <!-- SWAN TRACKING -->
+    <script>
+    (function() {
+        const SWAN_API = 'https://2026swantest2-production.up.railway.app/webhook/visitor';
+        const PROJECT_ID = 'demo_project';
+        function getSessionId() { let id = sessionStorage.getItem('_swan_sid'); if (!id) { id = 'sess_' + Math.random().toString(36).substr(2, 12) + '_' + Date.now(); sessionStorage.setItem('_swan_sid', id); sessionStorage.setItem('_swan_start', Date.now().toString()); } return id; }
+        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); pages.push({ url: window.location.pathname, title: document.title, time: new Date().toISOString() }); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); return pages; }
+        function getDuration() { const start = parseInt(sessionStorage.getItem('_swan_start') || Date.now()); return Math.round((Date.now() - start) / 1000); }
+        function sendToSwan(event = 'pageview') { fetch(SWAN_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event: event }), keepalive: true }); }
+        window.addEventListener('load', () => sendToSwan('pageview'));
+        window.addEventListener('beforeunload', () => { navigator.sendBeacon(SWAN_API, JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, pages_viewed: JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'), visit_duration: getDuration(), timestamp: new Date().toISOString(), event: 'exit' })); });
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Mav<span>lers</span></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <h1>📈 Case Studies</h1>
+        <p>Real results for real businesses</p>
+        <span class="intent-badge">🎯 HIGH INTENT PAGE - Viewing case studies indicates serious buyer interest!</span>
+    </section>
+    
+    <section class="case-studies">
+        <div class="container">
+            <div class="case-grid">
+                <div class="case-card">
+                    <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🛒</div>
+                    <div class="content">
+                        <span class="industry">E-commerce</span>
+                        <h3>ShopMax</h3>
+                        <p>How we increased online sales by 340% in 6 months through strategic SEO and PPC campaigns.</p>
+                        <div class="stats">
+                            <div class="stat"><div class="number">340%</div><div class="label">Revenue Growth</div></div>
+                            <div class="stat"><div class="number">2.5x</div><div class="label">ROAS</div></div>
+                            <div class="stat"><div class="number">50K</div><div class="label">New Customers</div></div>
+                        </div>
+                        <a href="contact.html" class="btn">Read Full Case</a>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">💻</div>
+                    <div class="content">
+                        <span class="industry">SaaS</span>
+                        <h3>CloudSync Pro</h3>
+                        <p>Generating 500+ qualified leads monthly through content marketing and marketing automation.</p>
+                        <div class="stats">
+                            <div class="stat"><div class="number">500+</div><div class="label">Leads/Month</div></div>
+                            <div class="stat"><div class="number">45%</div><div class="label">Conv. Rate</div></div>
+                            <div class="stat"><div class="number">$2M</div><div class="label">Pipeline</div></div>
+                        </div>
+                        <a href="contact.html" class="btn">Read Full Case</a>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🏥</div>
+                    <div class="content">
+                        <span class="industry">Healthcare</span>
+                        <h3>MedTech Solutions</h3>
+                        <p>Building thought leadership and driving enterprise leads in the competitive healthcare tech space.</p>
+                        <div class="stats">
+                            <div class="stat"><div class="number">120%</div><div class="label">Traffic Growth</div></div>
+                            <div class="stat"><div class="number">85</div><div class="label">Enterprise Leads</div></div>
+                            <div class="stat"><div class="number">#1</div><div class="label">Industry Ranking</div></div>
+                        </div>
+                        <a href="contact.html" class="btn">Read Full Case</a>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div style="height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">🍔</div>
+                    <div class="content">
+                        <span class="industry">Food & Beverage</span>
+                        <h3>FreshBite Delivery</h3>
+                        <p>Launching a new food delivery app to 1M+ downloads through influencer marketing and paid social.</p>
+                        <div class="stats">
+                            <div class="stat"><div class="number">1M+</div><div class="label">Downloads</div></div>
+                            <div class="stat"><div class="number">$0.50</div><div class="label">CPI</div></div>
+                            <div class="stat"><div class="number">4.8★</div><div class="label">App Rating</div></div>
+                        </div>
+                        <a href="contact.html" class="btn">Read Full Case</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Mavlers. 🦢 Swan AI Tracking Demo</p>
+    </footer>
+    
+    <div class="tracking-indicator">
+        <span class="dot"></span>
+        Swan AI Tracking Active
+    </div>
+</body>
+</html>

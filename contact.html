@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Mavlers Digital Marketing Agency</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        nav { background: #1a1a2e; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        .logo span { color: #e94560; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #fff; text-decoration: none; }
+        .page-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .contact { padding: 5rem 2rem; }
+        .contact .container { max-width: 800px; margin: 0 auto; }
+        .contact-form { background: #fff; border-radius: 15px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #e94560; outline: none; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: #e94560; color: #fff; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; width: 100%; }
+        .btn:hover { background: #d63050; }
+        footer { background: #0f0f1a; color: #fff; padding: 3rem 2rem; text-align: center; }
+        .tracking-indicator { position: fixed; bottom: 20px; right: 20px; background: #4CAF50; color: white; padding: 10px 15px; border-radius: 5px; font-size: 12px; z-index: 9999; display: flex; align-items: center; gap: 8px; }
+        .tracking-indicator .dot { width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .intent-badge { background: #4CAF50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-top: 1rem; }
+    </style>
+    <!-- SWAN TRACKING -->
+    <script>
+    (function() {
+        const SWAN_API = 'https://2026swantest2-production.up.railway.app/webhook/visitor';
+        const PROJECT_ID = 'demo_project';
+        function getSessionId() { let id = sessionStorage.getItem('_swan_sid'); if (!id) { id = 'sess_' + Math.random().toString(36).substr(2, 12) + '_' + Date.now(); sessionStorage.setItem('_swan_sid', id); sessionStorage.setItem('_swan_start', Date.now().toString()); } return id; }
+        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); pages.push({ url: window.location.pathname, title: document.title, time: new Date().toISOString() }); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); return pages; }
+        function getDuration() { const start = parseInt(sessionStorage.getItem('_swan_start') || Date.now()); return Math.round((Date.now() - start) / 1000); }
+        function sendToSwan(event = 'pageview') { fetch(SWAN_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event: event }), keepalive: true }); }
+        window.addEventListener('load', () => sendToSwan('pageview'));
+        window.addEventListener('beforeunload', () => { navigator.sendBeacon(SWAN_API, JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, pages_viewed: JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'), visit_duration: getDuration(), timestamp: new Date().toISOString(), event: 'exit' })); });
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Mav<span>lers</span></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <h1>📞 Get in Touch</h1>
+        <p>Let's discuss how we can grow your business</p>
+        <span class="intent-badge">🔥 HIGHEST INTENT - Contact page visit = ready to buy!</span>
+    </section>
+    
+    <section class="contact">
+        <div class="container">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Demo form - not actually submitted!');">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" placeholder="John Smith" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Work Email *</label>
+                    <input type="email" placeholder="john@company.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Company Name *</label>
+                    <input type="text" placeholder="Acme Inc." required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Company Size</label>
+                    <select>
+                        <option>1-10 employees</option>
+                        <option>11-50 employees</option>
+                        <option>51-200 employees</option>
+                        <option>201-500 employees</option>
+                        <option>500+ employees</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>What services are you interested in?</label>
+                    <select>
+                        <option>SEO & Content Marketing</option>
+                        <option>Paid Advertising</option>
+                        <option>Social Media Management</option>
+                        <option>AI & Automation</option>
+                        <option>Full-Service Marketing</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Monthly Marketing Budget</label>
+                    <select>
+                        <option>$1,000 - $5,000</option>
+                        <option>$5,000 - $10,000</option>
+                        <option>$10,000 - $25,000</option>
+                        <option>$25,000+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tell us about your project</label>
+                    <textarea rows="5" placeholder="Describe your goals, challenges, and timeline..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">🚀 Request a Consultation</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Mavlers. 🦢 Swan AI Tracking Demo</p>
+    </footer>
+    
+    <div class="tracking-indicator">
+        <span class="dot"></span>
+        Swan AI Tracking Active
+    </div>
+</body>
+</html>

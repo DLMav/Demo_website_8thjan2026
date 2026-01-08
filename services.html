@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Mavlers Digital Marketing Agency</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        nav { background: #1a1a2e; padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.5rem; font-weight: bold; text-decoration: none; }
+        .logo span { color: #e94560; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #fff; text-decoration: none; }
+        nav a:hover { color: #e94560; }
+        .page-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .services { padding: 5rem 2rem; }
+        .services .container { max-width: 1200px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .service-card { background: #fff; border-radius: 15px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .service-card h3 { font-size: 1.5rem; color: #1a1a2e; margin-bottom: 1rem; }
+        .service-card p { color: #666; margin-bottom: 1rem; }
+        .service-card ul { color: #666; padding-left: 1.5rem; }
+        .service-card li { margin-bottom: 0.5rem; }
+        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: #e94560; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
+        footer { background: #0f0f1a; color: #fff; padding: 3rem 2rem; text-align: center; }
+        .tracking-indicator { position: fixed; bottom: 20px; right: 20px; background: #4CAF50; color: white; padding: 10px 15px; border-radius: 5px; font-size: 12px; z-index: 9999; display: flex; align-items: center; gap: 8px; }
+        .tracking-indicator .dot { width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    </style>
+    <!-- SWAN TRACKING -->
+    <script>
+    (function() {
+        const SWAN_API = 'https://2026swantest2-production.up.railway.app/webhook/visitor';
+        const PROJECT_ID = 'demo_project';
+        function getSessionId() { let id = sessionStorage.getItem('_swan_sid'); if (!id) { id = 'sess_' + Math.random().toString(36).substr(2, 12) + '_' + Date.now(); sessionStorage.setItem('_swan_sid', id); sessionStorage.setItem('_swan_start', Date.now().toString()); } return id; }
+        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); pages.push({ url: window.location.pathname, title: document.title, time: new Date().toISOString() }); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); return pages; }
+        function getDuration() { const start = parseInt(sessionStorage.getItem('_swan_start') || Date.now()); return Math.round((Date.now() - start) / 1000); }
+        function sendToSwan(event = 'pageview') { fetch(SWAN_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event: event }), keepalive: true }); }
+        window.addEventListener('load', () => sendToSwan('pageview'));
+        window.addEventListener('beforeunload', () => { navigator.sendBeacon(SWAN_API, JSON.stringify({ project_id: PROJECT_ID, session_id: getSessionId(), current_url: window.location.href, pages_viewed: JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'), visit_duration: getDuration(), timestamp: new Date().toISOString(), event: 'exit' })); });
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Mav<span>lers</span></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <h1>🚀 Our Services</h1>
+        <p>Full-stack digital marketing solutions powered by data and AI</p>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🎯 SEO & Content Marketing</h3>
+                    <p>Dominate search results with our data-driven SEO strategies.</p>
+                    <ul>
+                        <li>Technical SEO audits</li>
+                        <li>Keyword research & strategy</li>
+                        <li>Content creation & optimization</li>
+                        <li>Link building campaigns</li>
+                        <li>Local SEO optimization</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>📱 Social Media Management</h3>
+                    <p>Build your brand and engage audiences across all platforms.</p>
+                    <ul>
+                        <li>Social media strategy</li>
+                        <li>Content calendar planning</li>
+                        <li>Community management</li>
+                        <li>Influencer partnerships</li>
+                        <li>Social analytics & reporting</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>🤖 AI & Marketing Automation</h3>
+                    <p>Automate repetitive tasks and scale your marketing efforts.</p>
+                    <ul>
+                        <li>Marketing workflow automation</li>
+                        <li>AI-powered content generation</li>
+                        <li>Chatbot development</li>
+                        <li>Lead scoring & nurturing</li>
+                        <li>Custom AI solutions</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>💰 Paid Advertising</h3>
+                    <p>Maximize ROI with expertly managed ad campaigns.</p>
+                    <ul>
+                        <li>Google Ads management</li>
+                        <li>Facebook & Instagram Ads</li>
+                        <li>LinkedIn advertising</li>
+                        <li>Programmatic display</li>
+                        <li>Retargeting campaigns</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>📧 Email Marketing</h3>
+                    <p>Convert leads into customers with targeted email campaigns.</p>
+                    <ul>
+                        <li>Email strategy development</li>
+                        <li>Template design</li>
+                        <li>Automation sequences</li>
+                        <li>A/B testing optimization</li>
+                        <li>List management & segmentation</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>📊 Analytics & Reporting</h3>
+                    <p>Make data-driven decisions with comprehensive insights.</p>
+                    <ul>
+                        <li>Custom dashboard setup</li>
+                        <li>GA4 implementation</li>
+                        <li>Conversion tracking</li>
+                        <li>Attribution modeling</li>
+                        <li>Monthly performance reports</li>
+                    </ul>
+                    <a href="contact.html" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Mavlers. 🦢 Swan AI Tracking Demo</p>
+    </footer>
+    
+    <div class="tracking-indicator">
+        <span class="dot"></span>
+        Swan AI Tracking Active
+    </div>
+</body>
+</html>
